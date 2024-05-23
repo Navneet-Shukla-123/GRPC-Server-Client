@@ -13,7 +13,17 @@ type myInvoicerServer struct {
 	invoicer.UnimplementedInvoicerServer
 }
 
-func (s myInvoicerServer) Create(context.Context, *invoicer.CreateRequest) (*invoicer.CreateResponse, error) {
+func (s myInvoicerServer) Create(ctx context.Context, req *invoicer.CreateRequest) (*invoicer.CreateResponse, error) {
+
+	log.Println("Server is hit.")
+	amount:=req.GetAmount()
+	from:=req.GetFrom()
+	to:=req.GetTo()
+
+	log.Println("Amount is ",amount)
+	log.Println("From address is ",from)
+	log.Println("To address is ",to)
+
 
 	return &invoicer.CreateResponse{
 		Pdf:  []byte("This is the PDF."),

@@ -14,7 +14,6 @@ message CreateRequest{
     string from=2;
     string to=3;
 
-    
 }
 
 message CreateResponse{
