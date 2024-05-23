@@ -1,0 +1,29 @@
+syntax="proto3";
+
+package invoicer;
+
+option go_package="invoicer/";
+
+message Amount{
+    int64 amount=1;
+    string currency=2;
+}
+
+message CreateRequest{
+    Amount amount=1;
+    string from=2;
+    string to=3;
+
+    
+}
+
+message CreateResponse{
+
+    bytes pdf=1;
+    bytes docx=2;
+
+}
+
+service Invoicer{
+    rpc Create(CreateRequest) returns(CreateResponse);
+}
